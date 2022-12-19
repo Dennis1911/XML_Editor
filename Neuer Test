@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<targetsystem desc="SYSTEM - All Checks" id="SYSTEM_ALL" multisql="Yes">
+  <configstore name="TEST_PARAMETER">
+    <checkitem desc="Listen Interface" id="CFG.SYSTEM.01">
+      <compliant>FILE_NAME = 'global.ini' and 
+                 SECT = 'communication' and 
+                 NAME = 'listeninterface' and 
+                 VALUE != '.global'
+      </compliant>
+      <noncompliant>FILE_NAME = 'global.ini' and 
+                 SECT = 'communication' and 
+                 NAME = 'listeninterface' and 
+                 NOT ( VALUE  != '.global' )
+      </noncompliant>
+    </checkitem>
+    <!-- is being done differently by security compliance , remove for the time being
+    <checkitem desc="signed Certificates" id="CFG.SYSTEM.02">
+      <compliant>FILE_NAME = 'global.ini' and 
+                 SECT = 'communication' and 
+                 NAME = 'cert' and 
+                 VALUE = 'true'
+      </compliant>
+      <noncompliant>FILE_NAME = 'global.ini' and 
+                 SECT = 'communication' and 
+                 NAME = 'cert' and 
+                 NOT ( VALUE  = 'true' )
+      </noncompliant>
+    </checkitem>
+-->
+    <checkitem desc="Audit Configuration" id="CFG.SYSTEM.03">
+      <compliant>FILE_NAME = 'global.ini' and 
+                 SECT = 'auditing configuration' and 
+                 NAME = 'default_audit_trail_type' and 
+                 VALUE = 'SYSPROTOCOL'
+      </compliant>
+      <noncompliant>FILE_NAME = 'global.ini' and 
+                 SECT = 'auditing configuration' and 
+                 NAME = 'default_audit_trail_type' and 
+                 NOT ( VALUE = 'SYSPROTOCOL' )
+      </noncompliant>
+    </checkitem>
+    <checkitem desc="Audit Configuration" id="CFG.SYSTEM.04">
+      <compliant>FILE_NAME = 'global.ini' and 
+                 SECT = 'auditing configuration' and 
+                 NAME = 'global_auditing_state' and 
+                 VALUE = 'true'
+      </compliant>
+      <noncompliant>FILE_NAME = 'global.ini' and 
+                 SECT = 'auditing configuration' and 
+                 NAME = 'global_auditing_state' and 
+                 NOT ( VALUE = 'true' )
+      </noncompliant>
+    </checkitem>
+    <checkitem desc="Persistence Configuration" id="CFG.SYSTEM.05">
+      <compliant>FILE_NAME = 'global.ini' and 
+                 SECT = 'persistence' and 
+                 NAME = 'basepath_logbackup' and 
+                 ( VALUE like '/path/to/log' OR VALUE like '/path/to/backup/log'  )
+      </compliant>
+      <noncompliant>FILE_NAME = 'global.ini' and 
+                 SECT = 'persistence' and 
+                 NAME = 'basepath_logbackup' and 
+                 NOT ( VALUE like '/path/to/log' OR VALUE like '/path/to/backup/log'   )
+      </noncompliant>
+    </checkitem>
+  <checkitem desc="Neues Checkitem" id="1234"><compliant>Hallo Herr Böhrner</compliant><noncompliant>dies ist nur ein Test</noncompliant></checkitem></configstore>
+</targetsystem>
